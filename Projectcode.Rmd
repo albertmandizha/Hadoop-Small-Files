@@ -1,0 +1,54 @@
+---
+title: "Paper Albert"
+author: "Albert Mandizha"
+date: "2022-12-06"
+output:
+  word_document: default
+  html_document: default
+---
+```{r}
+library(ggplot2)
+library(ggpmisc)
+library(gginnards)
+nfiles=c(1067,243,8,1)
+timeh=c(2014,1399,941,478)
+data=as.data.frame(cbind(nfiles,timeh))
+data
+plot(data)
+formula1= nfile~timeh
+ggplot(data = data, aes(x = timeh, y = nfiles)) +
+  geom_point(color = 'blue')+
+  labs(y= "Number of Files", x = "Time in Milliseconds", 
+       title = "Hadoop Uptime Vs Number of Files")+
+  geom_smooth(method = 'lm', se = TRUE) 
+  
+avg=c(530,772.7,1147.7,2263.59)
+data$avg=avg
+data
+scaled.data=scale(data$avg)
+data$scaled.data=scaled.data
+ggplot(data = data, aes(x = avg, y = nfiles)) +
+  geom_point(color = 'blue')+
+  labs(y= "Number of Files", x = "Average Process Time", 
+       title = "Average Process Time Vs Number of Files")+
+  geom_smooth(method = 'lm', se = TRUE) 
+
+hmn=c(96.55,65.06,54.17,37.82)
+nfl=c(1126,261,11,5)
+data1=as.data.frame(cbind(hmn,nfl))
+data1
+ggplot(data = data1, aes(x = hmn, y = nfl)) +
+  geom_point(color = 'blue')+
+  labs(y= "Number of Files", x = "Heap Memory (Megabyte)",
+       title = "Heap Memory Vs Number of Files")+
+  geom_smooth(method = 'lm', se = TRUE) 
+tfl=c(2248,518,24,14)
+
+data2=as.data.frame(cbind(hmn,tfl))
+data2
+ggplot(data = data1, aes(x = hmn, y = tfl)) +
+  geom_point(color = 'blue')+
+  labs(y= "Total File System Object", x = "Heap Memory (Megabyte)",
+       title = "Heap Memory Vs Number of Files")+
+  geom_smooth(method = 'lm', se = TRUE) 
+
