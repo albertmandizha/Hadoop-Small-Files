@@ -1,7 +1,39 @@
-# Hadoop-Small-Files
-Impact of Small files on Hadoop Performance.
-A small file is one which is significantly smaller than the HDFS block size (default 64MB/128MB). If were storing small files, then we probably have lots of blocks, otherwise we wouldn’t turn to Hadoop, and the problem is that HDFS can’t handle lots of files. As a general rule, each file, directory, and block in HDFS is represented as an object in the namenode's memory, which typically takes up 150 bytes. Thus, if 10 million files were used, each requiring a block, 3 gigabytes of memory would be required. With existing gear, scaling up considerably beyond this point is problematic. A billion files are definitely not doable.
+# Impact of Small Files on Hadoop Performance
 
-The paper focused on the two metrics of the Hadoop namenode fsimage loading time and process time to ingest data into the datanode. Four different number of files were loaded on four single node clusters. The files were of different sizes with the first case having 1067 1MB files and case 2 had 267 4MB files, Case 3 had 7 154MB sized files and Case 4 had 1Gig 1 file. All the cases were of the same size 1Gig. 
+## Overview:
 
-The experiments established a positive relationship between the number of files and the time taken by the namenode fsimage to load when a Hadoop cluster is started. The experiment also established it was faster to ingest a single 1 gig file as compared to 1gig of 1000 1MB files. The paper went on to discuss possible sources of small files and established the sequencing file approach to deal with small files in Hadoop. For future research the paper noted the need to use a multi-cluster and also to observe live streaming data processing and measure other metrics that affect the namenode when dealing with small files.
+This repository contains the research paper titled "Impact of Small Files on Hadoop Performance: An Analysis of the Namenode Storage Capacity and Processing Performance." The paper investigates the challenges posed by small files in Apache Hadoop systems and analyzes their impact on cluster performance.
+
+## Research Objectives:
+
+The research paper aims to:
+
+- Investigate the impact of small files on Namenode memory utilization.
+- Analyze the relationship between small files and processing efficiency in Hadoop systems.
+- Propose optimization strategies to mitigate the adverse effects of small files on Hadoop performance.
+
+## Contents:
+
+- **Introduction:** Provides an overview of small files' impact on Hadoop performance.
+- **Literature Review:** Reviews previous studies and literature on the challenges posed by small files in Hadoop systems.
+- **Experimental Setup:** Details the experimental configuration and methodology used to analyze the impact of small files.
+- **Results Interpretation and Analysis:** Presents and analyzes the results of experiments conducted to assess Namenode storage and processing performance.
+- **Conclusion and Recommendation:** Summarizes findings and provides recommendations for future research and Hadoop system optimization.
+- **Acknowledgements:** Acknowledges contributors and supporters of the research project.
+- **Appendix:** Contains supplementary materials, including experimental data, code, and snapshots.
+
+## How to Use:
+
+To access the research paper and supplementary materials:
+
+1. Clone this repository to your local machine.
+2. Navigate to the relevant sections to read the paper, view experimental results, and access additional resources.
+
+## Authors:
+
+- Albert Mandizha (Illinois Institute of Technology)
+
+## License:
+
+This research paper is licensed under the [MIT License](LICENSE).
+
